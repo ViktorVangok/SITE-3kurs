@@ -1,4 +1,4 @@
-## Dubrovskiy Konstantin 953502
+## Buyukov Viktor 953502
 
 ### Song and lyrics DB
 ___
