@@ -1,0 +1,151 @@
+#lyrics-page .lyrics-song-image {
+    margin-right: 10px;
+    width: 170px;
+    height: 170px;
+    border-radius: 20px;   
+    object-fit: cover;
+}
+
+#lyrics-page > .wrapper {    
+    border: 2px solid #999;
+    border-radius: 20px;
+    margin: 25px 50px;
+    padding: 2px 5px;
+    height: fit-content;    
+    
+    font-family: 'Luminari', cursive;
+    font-size: larger;
+    justify-content: right;
+}
+
+
+#lyrics-page .song-header .lyrics-song-name,
+#lyrics-page .song-header .lyrics-song-artist {
+    margin: auto;
+    padding: 0px 10px;
+    vertical-align: middle;
+    font-size: 38px;
+}
+
+#lyrics-page .song-header {
+    width: fit-content;
+    height: fit-content;
+}
+
+#lyrics-page pre {    
+    font-family: 'Luminari', cursive;
+}
+
+#lyrics-page .sharing {
+    position: absolute;
+    visibility: hidden;
+    font-family: 'Luminari', cursive;    
+    font-size: larger;
+    top: 0;
+    left: 0;
+    z-index: 500;
+}
+#lyrics-page .sharing--shown {
+    visibility: visible;
+    height: 20px;
+    width: 50px;
+}
+
+#lyrics-page #lyrics-song {
+    min-width: 700px;
+    max-width: 900px;
+    min-height: 500px;
+    height: fit-content;
+    padding: 15px;
+    font-family: 'Luminari', cursive;
+    font-size: larger;
+
+    word-wrap: normal;    
+    
+    background: none;
+    outline: none;
+    border: none;
+    /*overflow: hidden;*/
+    resize: none;
+}
+
+#lyrics-page .comment::selection,
+#lyrics-page #lyrics-song::selection {
+    background-color: yellow;
+}
+
+#lyrics-page #lyrics-song::selection:hover {
+    color: red;
+}
+
+#lyrics-page .comment {
+    background-color: pink;
+}
+
+#lyrics-page .comment:hover {
+    background-color:fuchsia;
+}
+
+#lyrics-page .lyrics-song-fragment {
+    height: fit-content;
+    width: fit-content;
+    padding: 30px 15px;
+}
+
+#lyrics-page aside {
+    margin-left: 15px;
+}
+
+#lyrics-page #lyrics-aside {
+    padding: 15px;
+    font-family: 'Luminari', cursive;
+    font-size: larger;
+    color: red;
+
+    min-width: 180px;
+    min-height: 80px;
+    max-width: 550px;
+
+    word-wrap: normal;    
+    
+    background: none;
+    outline: none;
+    border-radius: 15px;
+}
+
+#lyrics-page .submitButton{
+    display: none;
+    font-family: 'Luminari', cursive;
+    font-size: large;
+}
+
+@media screen and (max-width: 1500px) {
+    #lyrics-page #lyrics-aside {
+        max-width: 335px;
+    }
+}
+
+@media screen and (max-width: 1260px) {
+    #lyrics-page #lyrics-song {
+        width: 60%;
+        min-width: 60%;
+        max-width: 500px;
+    }
+    #lyrics-page #lyrics-aside {
+        max-width: 300px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #lyrics-page #lyrics-area {
+        flex-direction: column;
+    }
+    #lyrics-page #lyrics-song {
+        width: 100%;
+        min-width: 80%;
+        max-width: 100%;
+    }    
+    #lyrics-page #lyrics-aside {
+        height: 400px;
+    }
+}

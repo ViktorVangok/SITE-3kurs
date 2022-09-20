@@ -1,0 +1,249 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}" />
+        <title>BEST SITE</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" href="{% static 'css/login.css' %}"> 
+        <link rel="stylesheet" href="{% static 'css/contacts.css' %}"> 
+        <link rel="stylesheet" href="{% static 'css/about.css' %}"> 
+        <link rel="stylesheet" href="{% static 'css/profile.css' %}">        
+        <link rel="stylesheet" href="{% static 'css/lyrics.css' %}">
+    </head>
+
+    <body>
+        
+        <div class="wrapper">
+            <header>
+                <div class="container-row">
+                    <nav id="menu">
+                        <ul>
+                            <li><a href="#main">Главная</a></li>
+                            <li><a href="#about">О нас</a></li>
+                            <li><a href="#contacts">Контакты</a></li>
+                        </ul>               
+                    </nav>
+
+                    <nav id="profile">
+                        <ul>
+                            <li>
+                                <div class="profileclick">
+                                    <a href="#profile">
+                                        <img class="avatar" src="{% static 'img/avatar.png' %}" width="30" alt="User"/>
+                                    </a>
+                                    <p id="username">Имя пользователя</p>
+                                </div>                                
+                            </li>
+                            <li><a href="#login">Профиль</a></li>
+                        </ul>               
+                    </nav>                    
+                </div>                          
+            </header>
+
+            <main>
+                <section id="main-page" onfocus="console.log('main-focus')" class="visible">
+                    
+                    <h1> Тексты песен сайт плюс социальный рейтинг</h1>
+                    <div class="wrapper">
+                        <ul id="song-list">
+                            <!-- Автогенерация по шаблону этого первого элемента-->
+                            <li>
+                                <a href="#lyrics">
+                                    <div class="container-song container-row">
+                                        <img class="song-image" src="{% static 'img/song-default.ico' %}" alt="song-image">
+                                        <div class="wrapperr">                                            
+                                            <div class="container-row desctop">
+                                                <div class="container-row mobile">
+                                                    <p class="song-name">Песня 1</p>
+                                                </div>
+                                                <div class="container-row mobile">
+                                                    <p class="song-artist">Исполнитель 1</p>
+                                                </div>
+                                            </div>
+                                            <div class="container-row">
+                                                <p class="song-lyrics">Типо текст</p>
+                                            </div>
+                                        </div>                             
+                                    </div>
+                                </a>                 
+                            </li>
+                        </ul>
+                    </div>
+
+                </section> 
+                
+                <section id="about-page" class="invisible">
+                    <div class="wrapper">
+                        <h1>
+                            Сайт создан в качестве проекта по лабораторным</h1> 
+                        <h2>
+                            Хорошо, что он никогда не выйдет в продакшн..</h2>
+                        <img src="{% static 'img/about.gif' %}" alt="sad" width="500">
+                    </div>
+                </section>
+
+                <section id="contacts-page" class="invisible">
+                    <div class="wrapper">
+                        <p>
+                            Связаться с нами можно следующими способами:</p>
+                        <ol>
+                            <li>Лучше не надо</li>
+                            <li>Никак</li>
+                            <li>Никак</li>
+                            <li>см. п. 1</li>
+                            <li>Ну и еще можно: Никак</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section id="profile-page" class="invisible">
+                    <div class="wrapper">
+                        <div class="container-row">
+                            <div class="wrapper">
+                                <img class="avatar" src="{% static 'img/avatar.png' %}" alt="avatar" width="400"> 
+                                <form id="update-avatar" method="post" action="" enctype="multipart/form-data">{% csrf_token %}
+                                    <p>Можете загрузить новую аву</p>
+                                    <button id="upload-avatar" type="button" onclick="document.getElementById('avatar-input').click();">Загрузить</button>
+                                    <input id="avatar-input-name" name="avatar-input-name" type="text" style="display: none;">
+                                    <input id="avatar-input" name="avatar-input" class="input-song" type="file" accept=".jpg, .jpeg, .png" style="display: none;">
+                                </form>  
+                            </div>
+                            <div class="wrapper">
+                                <p>Красавец на картинке это</p>
+                                <h1 class="username">Имя пользователя</h1>
+                                <form id="upload-song" method="post" action="" enctype="multipart/form-data">{% csrf_token %}
+                                    <p>Не хотите добавить песню для нашей коллекции?
+                                        <br>Тогда ее смогут увидеть другие пользователи на главной странице</p>
+                                    <div class="container-row"><input id="input-song-img" name="input-song-img" class="input-song" type="file" accept=".jpg, .jpeg, .png" ><label for="input-song-img" class="input-song">Картинка</label></div>
+                                    <div class="container-row"><input id="input-song-name" name="input-song-name" class="input-song" type="text" maxlength="30"><label for="input-song-name" class="input-song">Название</label></div>
+                                    <div class="container-row"><input id="input-song-artist" name="input-song-artist" class="input-song" type="text" maxlength="30"><label for="input-song-artist" class="input-song">Исполнитель</label></div>
+                                    <textarea id="input-lyrics" name="input-lyrics" class="input-lyrics input-song" class="" wrap="off" cols="30" rows="10"></textarea> 
+                                    <script>
+                                        let textarea_profile = document.querySelector('textarea#input-lyrics');
+                                        textarea_profile.addEventListener('keyup', function(){
+                                        if(this.scrollTop > 0){
+                                            this.style.height = this.scrollHeight + "px";
+                                        }
+                                        });
+                                    </script>
+                                    <button id="send-song" type="button" onclick="uploadingSongFormSubmit();">Отправить</button>                                
+                                </form>
+                            </div>
+                        </div>                                   
+                        <p class="disclaimer">Никому не сообщайте пароли для ваших аккаутнов!</p>
+                    </div>
+                </section>
+
+                <section id="lyrics-page" class="invisible">                    
+                    <div class="wrapper">
+                        <div class="container-row song-header">
+                            <img class="lyrics-song-image" src="{% static 'img/song-default.ico' %}" alt="song-image" width="50">
+                            <h1 class="lyrics-song-name">Song name</h1>
+                            <h2 class="lyrics-song-artist">Song artist</h2>
+                            
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div id="lyrics-area" class="container-row">
+
+                                <div class="sharing">
+                                    <div class="sharing__buttons">
+                                        <button id="share" title="Добавить">Добавить</button>
+                                    </div>
+                                    <span class="sharing__triangle"></span>
+                                </div>
+
+                                <pre name="lyrics-song" id="lyrics-song" rows="auto" cols="auto" wrap="soft" readonly></pre>
+                                
+                                <aside>
+                                    <form id="comment-form" action="" method="post" onsubmit="">{% csrf_token %}
+                                        <h2 class="lyrics-song-fragment">Lyrics Fragment</h2>
+                                        <textarea name="lyrics-aside" id="lyrics-aside" rows="auto" cols="auto" wrap="soft"></textarea>
+                                        <script>
+                                            let textarea_lyrics = document.querySelector('textarea#lyrics-aside');
+                                            textarea_lyrics.addEventListener('keyup', function(){
+                                            if(this.scrollTop > 0){
+                                                this.style.height = this.scrollHeight + "px";
+                                            }
+                                            });
+                                        </script>
+                                        <button id="shareComment" class="submitButton" type="button" onclick="setComment()"">Отправить</button>
+                                    </form>                                    
+                                </aside>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="login-page" class="invisible">
+                    <div class="wrapper">
+                        <h1>
+                            Sign In / Sign Up
+                        </h1>
+                        <form id="login-form" method="post">{% csrf_token %}
+                            <div class="container-row">
+                                <div class="radio"><input id="sign-in" type="radio" class="sign-in-up" name="sign-in-up" value="signIn" checked><label for="sign-in">Sign In</label></div>
+                                <div class="radio"><input id="sign-up" type="radio" class="sign-in-up" name="sign-in-up" value="signUp"><label for="sign-up">Sign Up</label></div>
+                            </div>
+                            <div class="container-row">
+                                <input type="text" maxlength="30" class="auth-input" id="inputLogin" name="inputLogin" placeholder="Login">
+                            </div>
+                            <div class="container-row">
+                                <input type="text" maxlength="30" class="auth-input" id="inputPassword" name="inputPassword" placeholder="Password">
+                            </div>  
+                            <button id="submitButton" class="submitButton auth-input" type="button" onclick="authorizationFormSubmit()">Enter</button>                      
+                        </form>
+                    </div>
+                </section>
+
+            </main>
+            
+            <footer>
+                <div class="container-row">
+                    <nav id="social-networks">
+                        <ul>
+                            <li><a href="http://vk.com">
+                                <img src="{% static 'img/vk.ico' %}" width="30" alt="vk"></a></li>
+                            <li><a href="http://facebook.com">
+                                <img src="{% static 'img/fb.png' %}" width="30" alt="fb"></a></li>
+                            <li><a href="http://twitter.com">
+                                <img src="{% static 'img/tw.png' %}" width="30" alt="tw"></a></li>
+                            <li><a href="http://instagram.com">
+                                <img src="{% static 'img/inst.png' %}" width="30" alt="inst"></a></li>
+                        </ul>
+                    </nav>
+                    <p id="copyright-txt">
+                        Тексты песен и их переводы защищены авторским правом.
+                    </p>
+                </div>
+            </footer>
+        </div>
+
+
+        <!-- Костыль для получения относитьельного пути до static -->
+        <a id="djangoSourcePath" href="{% static 'source/' %}" style="display: none;"></a>
+        <script> const sourcePath = document.getElementById("djangoSourcePath").href; console.log(sourcePath)</script>
+        <!-- Авторизация пользователя -->
+        <script>
+            let json_user = sessionStorage.getItem('user');
+            let currentUser = json_user ? JSON.parse(json_user) : null;    
+            if(currentUser){
+                console.log(currentUser?.login);
+                document.querySelector("#profile-page .username").textContent = currentUser.login;
+                if(currentUser.imagePath){
+                    document.querySelectorAll("img.avatar").forEach(img => img.src = sourcePath + currentUser.imagePath);
+                }
+            }            
+        </script>
+        <script src="{% static 'js/pc_mobile_changer.js' %}"></script>
+        <script src="{% static 'js/page_changer.js' %}"></script>
+        <script src="{% static 'js/song_list_handler.js' %}"></script>        
+        <script src="{% static 'js/reader.js' %}"></script>        
+        <script src="{% static 'js/song_coment.js' %}"></script> 
+        <script src="{% static 'js/writer.js' %}"></script> 
+        <script src="{% static 'js/authorization.js' %}"></script> 
+        <script src="{% static 'js/start.js' %}"></script>
+    </body>
+</html>

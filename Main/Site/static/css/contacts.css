@@ -1,0 +1,20 @@
+#contacts-page .wrapper {
+    align-items: center;
+}
+
+#contacts-page p,
+#contacts-page li {
+    color: #777;
+    font-size: larger; 
+    font-family: 'Bradley Hand', cursive;
+}
+
+#contacts-page p {
+    margin-top: 50px; margin-bottom: 25px;
+}
+
+#contacts-page ol {
+    margin-left: 15px; min-width: 400px;
+}
+
+
